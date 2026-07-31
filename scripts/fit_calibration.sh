@@ -4,7 +4,7 @@ set -euo pipefail
 usage() {
   echo "Usage: $0 <dataset-root> [extra calibration/fit.py args]" >&2
   echo "Env: MATCHERS, DATASET, SPLIT, OUTPUT, OUTPUT_DIR, PARAMS_JSON, PYTHON_BIN" >&2
-  echo "     IMAGE_WIDTH, IMAGE_HEIGHT, SAMPLES, NUM_WORKERS, DEVICE, WEIGHTS" >&2
+  echo "     IMAGE_WIDTH, IMAGE_HEIGHT, SAMPLES, DEVICE, WEIGHTS" >&2
 }
 
 if [[ $# -lt 1 ]]; then
@@ -26,7 +26,6 @@ OUTPUT_DIR="${OUTPUT_DIR:-outputs/calibration}"
 IMAGE_WIDTH="${IMAGE_WIDTH:-1280}"
 IMAGE_HEIGHT="${IMAGE_HEIGHT:-960}"
 SAMPLES="${SAMPLES:-200}"
-NUM_WORKERS="${NUM_WORKERS:-8}"
 GATE_PENALTY="${GATE_PENALTY:-0.15}"
 MAX_ITERATIONS="${MAX_ITERATIONS:-120}"
 
@@ -46,7 +45,6 @@ for matcher in "${matcher_list[@]}"; do
     --width "$IMAGE_WIDTH"
     --height "$IMAGE_HEIGHT"
     --samples "$SAMPLES"
-    --num-workers "$NUM_WORKERS"
     --gate-penalty "$GATE_PENALTY"
     --max-iterations "$MAX_ITERATIONS"
   )

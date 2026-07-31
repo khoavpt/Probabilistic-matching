@@ -1,34 +1,32 @@
 <p align="center">
   <h1 align="center">Semi-Dense Matching Uncertainty Is Not Just Local Confidence 🎯</h1>
-  <!-- <p align="center">
-    <a href="https://www.linkedin.com/in/philipplindenberger/">Philipp Lindenberger</a>
-    ·
-    <a href="https://psarlin.com/">Paul-Edouard&nbsp;Sarlin</a>
-    ·
-    <a href="https://www.microsoft.com/en-us/research/people/mapoll/">Marc&nbsp;Pollefeys</a>
-  </p> -->
+
   <h2 align="center">
-    <!-- <p>WACV 2026?</p> -->
-    <a href="https://arxiv.org/pdf/2306.13643.pdf" align="center">Paper</a> | 
+    <!-- <p>!!</p> -->
+    <a href="" align="center">📄 Paper</a> | 
     <!-- <a href="https://colab.research.google.com/github/cvg/LightGlue/blob/main/demo.ipynb" align="center">Colab</a> | -->
-    <a href="https://huggingface.co/spaces/ETH-CVG/LightGlue" align="center">🤗 Demo </a> | 
+    <a href="https://huggingface.co/spaces/khoavpt/core-demo" align="center">🤗 Demo </a>  
   </h2>
 
 </p>
 <p align="center">
     <a href="https://arxiv.org/abs/2306.13643"><img src="assets/results_teaser.png" alt="example" width=90%></a>
     <br>
-    <em>LightGlue is a deep neural network that matches sparse local features across image pairs.<br>An adaptive mechanism makes it fast for easy pairs (top) and reduces the computational complexity for difficult ones (bottom).</em>
+    <em>CoRe is a lightweight, plug-and-play uncertainty estimation module that consistently improves downstream geometric estimation across diverse semi-dense matchers and robust estimators.</em>
 </p>
 
 
+This repository hosts the official implementation for **Semi-Dense Matching Uncertainty Is Not Just Local Confidence**. Our work is a lightweight, plug-and-play module for existing semi-dense matchers. It extracts uncertainty cues from the matching process to:
 
+- Model the full spatial distribution of correspondence errors in pixel space.
+- Improve robust geometry estimation through
+  **Coarse-success Posterior Refit (CoRe)**.
 
-This repository host the official implementation of **Semi-Dense Matching Uncertainty Is Not Just Local Confidence**. Our works focus on two main things:
-- Model the full spatial matching error (in pixels) using uncertainty cues extracted from the matching process.
-- Propose **CoRe**, a lightweight add-on which leverages the calibrated error model for robust geometry estimation.
+### 🔌 Supported matchers
 
-The code currently shows integration and experiments on various Semi-dense models including LoFTR, GIM_{LOFTR}, EfficientLoFTR, CoMatch, EDM, XFeat. Installations, Usage and Experiment recreation details are mentioned below.
+The code currently shows integration and experiments on various Semi-dense models including: [LoFTR](https://github.com/zju3dv/LoFTR), [GIM-LoFTR](https://github.com/xuelunshen/gim), [EfficientLoFTR](https://github.com/zju3dv/EfficientLoFTR), [CoMatch](https://github.com/ZizhuoLi/CoMatch), [EDM](https://github.com/chicleee/EDM), [XFeat](https://github.com/verlab/accelerated_features).
+
+Installations, Usage and Experiment recreation details are mentioned below.
 
 ## Installation 
 
@@ -56,7 +54,7 @@ Download the checkpoint(s) you need into `weights/`:
 Pass `--weights /another/path/checkpoint` to any public script to override the
 default location.
 
-## Usage  [![](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/ETH-CVG/LightGlue)
+## Usage and Demo  [![](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/khoavpt/core-demo)
 
 ### Refinement with CoRe
 Run the homography demo on one image pair:
@@ -87,10 +85,20 @@ H, inliers, weights = refit_homography_core(
 
 Equivalent version for Essential matrix estmation and PnP are provided in `core/essential_ransac.py` and `core/pnp_ransac.py`.
 
+<p align="center">
+    <a href="https://arxiv.org/abs/2306.13643"><img src="assets/space_demo.webp" alt="example" width=90%></a>
+    <br>
+    <em> 🤗 Hugging Face Spaces demo example</em>
+</p>
+
 ### Calibration
 
-Released calibration parameters are stored in `calibration/params.json`. To fit a
-new matcher, run calibration directly on MegaDepth-style depth data:
+The released calibration parameters are stored in
+`calibration/params.json`.
+
+We currently provide calibration code for MegaDepth-style datasets.
+Calibration for other dataset formats can be implemented by adapting the
+data loader accordingly.
 
 ```bash
 MATCHERS=eloftr OUTPUT=calibration/eloftr_custom.json \
@@ -104,7 +112,7 @@ MATCHERS="eloftr loftr xfeat" OUTPUT_DIR=outputs/calibration \
 ./scripts/fit_calibration.sh /path/to/MegaDepth/MegaDepth/train
 ```
 
-## Reproduce Resulst
+## Reproduce Results
 
 HPatches:
 
@@ -131,18 +139,24 @@ Aachen Day-Night v1.1:
 All wrappers accept extra CLI flags and support environment overrides. See
 `scripts/README.md` for the common variables.
 
-## Qualitative results
+<p align="center">
+  <img src="assets/runtime.png" alt="Qualitative homography refit comparison" width=80%>
+  <br>
+  <em> Our method introduces minimal overhead, acting as a lightweight post-processing step.</em>
+</p>
+
+## More Qualitative Results
 
 <p align="center">
-  <img src="assets/qualitative_homography.png" alt="Qualitative homography refit comparison" width="950">
+  <img src="assets/qualitative_homography.png" alt="Qualitative homography refit comparison" width=95%>
 </p>
 
 ## Citation
 
-<!-- TODO(release): replace with the final WACV BibTeX entry. -->
+<!-- TODO(release): replace with the final BibTeX entry. -->
 
-If you find this work useful, please cite the paper. The final BibTeX entry will
-be added after publication.
+If you find this work useful, please cite the paper. 
+...
 
 ## Acknowledgements and license
 
@@ -150,4 +164,4 @@ This work builds on the official matcher and robust-estimator
 implementations. Third-party code remains under the licenses included in each
 subdirectory.
 
-<!-- TODO(release): add the chosen license for the original CoRe code. -->
+<!-- TODO(release): add the chosen license -->
