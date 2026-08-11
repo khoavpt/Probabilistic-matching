@@ -279,7 +279,7 @@ class MTVScene:
 
 
 class MTVBuilder:
-    def __init__(self, data_root="/home/share_folder/dataset/MTV", loftr_ignore=True, imc21_ignore=True) -> None:
+    def __init__(self, data_root="MTV", loftr_ignore=True, imc21_ignore=True) -> None:
         self.data_root = data_root
         self.all_scenes = [ name for name in os.listdir(data_root) if osp.isdir(osp.join(data_root, name)) ]
         print(f" ALL SCENES: {self.all_scenes}")

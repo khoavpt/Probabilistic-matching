@@ -2,9 +2,14 @@ numpy>=1.23
 scipy>=1.10
 opencv-python>=4.8
 torch>=2.0
+torchvision
 einops>=0.6
 kornia>=0.7
 yacs>=0.1.8
 loguru>=0.7
 tqdm>=4.65
 pycolmap>=3.10
+h5py>=3.8
+matplotlib>=3.7
+pillow>=8.0
+albumentations>=1.3

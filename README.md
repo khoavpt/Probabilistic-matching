@@ -3,14 +3,13 @@
 
   <h2 align="center">
     <!-- <p>!!</p> -->
-    <a href="" align="center">📄 Paper</a> | 
-    <!-- <a href="https://colab.research.google.com/github/cvg/LightGlue/blob/main/demo.ipynb" align="center">Colab</a> | -->
+    <a href="https://arxiv.org/abs/2608.08685" align="center">📄 Paper</a> | 
     <a href="https://huggingface.co/spaces/khoavpt/core-demo" align="center">🤗 Demo </a>  
   </h2>
 
 </p>
 <p align="center">
-    <a href="https://arxiv.org/abs/2306.13643"><img src="assets/results_teaser.png" alt="example" width=90%></a>
+    <img src="assets/results_teaser.png" alt="example" width=90%>
     <br>
     <em>CoRe is a lightweight, plug-and-play uncertainty estimation module that consistently improves downstream geometric estimation across diverse semi-dense matchers and robust estimators.</em>
 </p>
@@ -33,8 +32,8 @@ Installations, Usage and Experiment recreation details are mentioned below.
 Clone the repo and setup environment using conda
 
 ```bash
-git clone REPOSITORY_URL
-cd REPOSITORY_NAME
+git clone https://github.com/khoavpt/probabilistic-matching.git
+cd probabilistic-matching
 
 conda env create -f environment.yml
 conda activate core
@@ -83,10 +82,11 @@ H, inliers, weights = refit_homography_core(
 )
 ```
 
-Equivalent version for Essential matrix estmation and PnP are provided in `core/essential_ransac.py` and `core/pnp_ransac.py`.
+Equivalent versions for essential matrix estimation and PnP are provided in
+`core/essential_ransac.py` and `core/pnp_ransac.py`.
 
 <p align="center">
-    <a href="https://arxiv.org/abs/2306.13643"><img src="assets/space_demo.webp" alt="example" width=90%></a>
+    <img src="assets/space_demo.webp" alt="example" width=90%>
     <br>
     <em> 🤗 Hugging Face Spaces demo example</em>
 </p>
@@ -153,10 +153,19 @@ All wrappers accept extra CLI flags and support environment overrides. See
 
 ## Citation
 
-<!-- TODO(release): replace with the final BibTeX entry. -->
+If you find this work useful, please cite the paper.
 
-If you find this work useful, please cite the paper. 
-...
+```bibtex
+@misc{hoang2026semidensematchinguncertaintyjust,
+      title={Semi-Dense Matching Uncertainty Is Not Just Local Confidence}, 
+      author={Khoa Hoang and Hoang-Tuan Nguyen and Huong Ninh and Hai Tran and Long Q. Tran},
+      year={2026},
+      eprint={2608.08685},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2608.08685}, 
+}
+```
 
 ## Acknowledgements and license
 

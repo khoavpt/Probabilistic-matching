@@ -4,12 +4,12 @@ from .homography_ransac import (
     estimate_homography_core,
     refit_homography_core,
 )
-# from .essential_ransac import (
-#     estimate_essential,
-#     estimate_essential_core,
-#     recover_pose,
-#     refit_essential_core,
-# )
+from .essential_ransac import (
+    estimate_essential,
+    estimate_essential_core,
+    recover_pose,
+    refit_essential_core,
+)
 from .pnp_ransac import estimate_pnp, estimate_pnp_core, refit_pnp_core
 
 __all__ = [
