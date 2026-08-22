@@ -1,12 +1,6 @@
 <p align="center">
   <h1 align="center">Semi-Dense Matching Uncertainty Is Not Just Local Confidence 🎯</h1>
 
-  <h2 align="center">
-    <!-- <p>!!</p> -->
-    <a href="https://arxiv.org/abs/2608.08685" align="center">📄 Paper</a> | 
-    <a href="https://huggingface.co/spaces/khoavpt/core-demo" align="center">🤗 Demo </a>  
-  </h2>
-
 </p>
 <p align="center">
     <img src="assets/results_teaser.png" alt="example" width=90%>
@@ -15,7 +9,7 @@
 </p>
 
 
-This repository hosts the official implementation for **Semi-Dense Matching Uncertainty Is Not Just Local Confidence**. Our work is a lightweight, plug-and-play module for existing semi-dense matchers. It extracts uncertainty cues from the matching process to:
+This repository hosts the reference implementation for **Semi-Dense Matching Uncertainty Is Not Just Local Confidence**. The method is a lightweight, plug-and-play module for existing semi-dense matchers. It extracts uncertainty cues from the matching process to:
 
 - Model the full spatial distribution of correspondence errors in pixel space.
 - Improve robust geometry estimation through
@@ -32,28 +26,29 @@ Installations, Usage and Experiment recreation details are mentioned below.
 Clone the repo and setup environment using conda
 
 ```bash
-git clone https://github.com/khoavpt/probabilistic-matching.git
+git clone <anonymous-repository-url>
 cd probabilistic-matching
 
 conda env create -f environment.yml
 conda activate core
 ```
 
-Download the checkpoint(s) you need into `weights/`:
+Download the checkpoint(s) from the corresponding upstream matcher release or
+checkpoint instructions, then place them into `weights/`:
 
-| Matcher | Official checkpoint | Expected path |
-|---|---|---|
-| EfficientLoFTR | [download](https://drive.google.com/drive/folders/1GOw6iVqsB-f1vmG6rNmdCcgwfB4VZ7_Q?usp=sharing) | `weights/eloftr_outdoor.ckpt` |
-| LoFTR | [download](https://drive.google.com/drive/folders/1DOcOPZb3-5cWxLqn256AhwUVjBPifhuf?usp=sharing) | `weights/loftr_outdoor.ckpt` |
-| EDM | [download](https://drive.google.com/drive/folders/1PkYNihwgnNwqQeeewBz4OUDrvY8xFdH0?usp=sharing) | `weights/edm_outdoor.ckpt` |
-| GIM-LoFTR | [GIM repository](https://github.com/xuelunshen/gim) | `weights/gim_loftr_50h.ckpt` |
-| CoMatch | [download](https://drive.google.com/file/d/1DHd7LZtNH1vwhoTUA8a8nVIiIpx-38RX/view?usp=sharing) | `weights/comatch_outdoor.ckpt` |
-| XFeat | [download](https://github.com/verlab/accelerated_features/raw/main/weights/xfeat.pt) | `weights/xfeat.pt` |
+| Matcher | Expected path |
+|---|---|
+| EfficientLoFTR | `weights/eloftr_outdoor.ckpt` |
+| LoFTR | `weights/loftr_outdoor.ckpt` |
+| EDM | `weights/edm_outdoor.ckpt` |
+| GIM-LoFTR | `weights/gim_loftr_50h.ckpt` |
+| CoMatch | `weights/comatch_outdoor.ckpt` |
+| XFeat | `weights/xfeat.pt` |
 
 Pass `--weights /another/path/checkpoint` to any public script to override the
 default location.
 
-## Usage and Demo  [![](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/khoavpt/core-demo)
+## Usage
 
 ### Refinement with CoRe
 Run the homography demo on one image pair:
@@ -88,7 +83,7 @@ Equivalent versions for essential matrix estimation and PnP are provided in
 <p align="center">
     <img src="assets/space_demo.webp" alt="example" width=90%>
     <br>
-    <em> 🤗 Hugging Face Spaces demo example</em>
+    <em>Demo visualization example</em>
 </p>
 
 ### Calibration
@@ -153,19 +148,7 @@ All wrappers accept extra CLI flags and support environment overrides. See
 
 ## Citation
 
-If you find this work useful, please cite the paper.
-
-```bibtex
-@misc{hoang2026semidensematchinguncertaintyjust,
-      title={Semi-Dense Matching Uncertainty Is Not Just Local Confidence}, 
-      author={Khoa Hoang and Hoang-Tuan Nguyen and Huong Ninh and Hai Tran and Long Q. Tran},
-      year={2026},
-      eprint={2608.08685},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2608.08685}, 
-}
-```
+Citation details will be added after the anonymous review period.
 
 ## Acknowledgements and license
 
