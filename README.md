@@ -2,7 +2,7 @@
   <h1 align="center">Semi-Dense Matching Uncertainty Is Not Just Local Confidence 🎯</h1>
 
   <h2 align="center">
-    <!-- <p>!!</p> -->
+    <p>WACV 2027</p>
     <a href="https://arxiv.org/abs/2608.08685" align="center">📄 Paper</a> | 
     <a href="https://huggingface.co/spaces/khoavpt/core-demo" align="center">🤗 Demo </a>  
   </h2>
